@@ -5,7 +5,7 @@ public class Runner {
     public static void main(String[] args) {
         long waitTime = 1000;
         int howMany = 3;
-        long howManyMinutes = 6000;
+        long howManyMinutes = 60000;
         Thread runnable =
                 new Thread(new ExecuteShellCommandEAPOL(
                         "sudo mdk3",System.currentTimeMillis(),waitTime,howManyMinutes)
