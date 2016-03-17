@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * Created by georgipavlov on 17.03.16.
@@ -20,11 +18,11 @@ public class ExecuteShellCommandDDOS implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            p.waitFor();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+      //  try {
+           // p.waitFor();
+        //} catch (InterruptedException e) {
+          //  e.printStackTrace();
+      //  }
 
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -36,16 +34,31 @@ public class ExecuteShellCommandDDOS implements Runnable {
                 if(line == null){
                     continue;
                 }
+                /*if(!line.equals("got authentication frame: from wrong AP or failed authentication!") && line != null){
                 System.out.println("---------------------");
-                    System.out.println("T1");
+                  System.out.println("T1");
+                    while ((reader.readLine())!= null && !line.equals("got authentication frame: from wrong AP or failed authentication!")){
+                        line = reader.readLine();
                     System.out.println(line);
-                    System.out.println("----------------------");
-                    output.append(line + "\n");
+                    }
+                   System.out.println("----------------------");
+                }
+               */    //output.append(line + "\n");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        BufferedWriter in =
+                new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+        try {
+            in.write("^C");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(p.isAlive());
         p.destroy();
+
 
         return output.toString();
 
