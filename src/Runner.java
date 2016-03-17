@@ -16,5 +16,6 @@ public class Runner {
                     new ExecuteShellCommandDDOS("sudo mdk3",System.currentTimeMillis(),waitTime,howManyMinutes)
             ).start();
         }
+        //startReaver
     }
 }
