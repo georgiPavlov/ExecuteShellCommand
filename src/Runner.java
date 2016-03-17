@@ -3,7 +3,7 @@
  */
 public class Runner {
     public static void main(String[] args) {
-        long waitTime = 1000;
+        long waitTime = 1000*4;
         int howMany = 3;
         long howManyMinutes = 60000;
         Thread runnable =
